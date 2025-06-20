@@ -1,0 +1,42 @@
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Buscador de CEP </title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+    <h1> Bem-Vindo ao Buscador de CEP</h1>
+  
+    <form action="/buscar" method="post">
+        <label for="cep">Digite o CEP:</label>
+        <input type="text" id="cep" name="cep" required placeholder="EX: 00000-000"><br>
+        <button type="submit">Buscar</button>
+    </form>
+    <br>
+
+    <footer>
+    <p>&copy; 2025 Buscador de CEP | Desenvolvido por Lívia Correia</p>
+</footer>
+
+
+    <!--é código Jinja2, que é uma linguagem de template usada dentro do Flask para gerar HTML dinâmico.//--> 
+
+  {% if resultado %} 
+    <h2>Informações sobre o CEP</h2>
+    <p><strong>CEP:</strong> {{ resultado.cep }}</p>
+    <p><strong>Logradouro:</strong> {{ resultado.logradouro }}</p>
+    <p><strong>Bairro:</strong> {{ resultado.bairro }}</p>
+    <p><strong>Cidade:</strong> {{ resultado.localidade }}</p>
+    <p><strong>Estado:</strong> {{ resultado.uf }}</p>
+  {% else %}
+    <h2> </h2>
+  {% endif %}
+    
+
+</body>
+</html>
+
+
